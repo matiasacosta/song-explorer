@@ -1,14 +1,12 @@
 import React from 'react';
+import { SearchBox } from '../SearchBox/SearchBox';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Song Explorer
-        </p>
-      </header>
+      <h1>Song Explorer</h1>
+      <SearchBox />
     </div>
   );
 }
