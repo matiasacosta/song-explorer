@@ -1,21 +1,29 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 
-type Song = {
-  name: string;
-};
 
-export const SearchBox = () => {
-  const { register, handleSubmit } = useForm<Song>();
-  const onSubmit = (data: Song) => {
-    console.log(data);
+interface IProps {
+  songName: string;
+  onSongNameChange: (name: string) => void;
+  onClick: () => void;
+}
+
+export const SearchBox: React.FC<IProps> = props => {
+  const handleNameSongChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.onSongNameChange(e.currentTarget.value);
+  };
+  
+  const handleClick = (e:React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    props.onClick();
   }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form>
       <div className="field">
-        <input type="text" id="name" name="name" ref={register}/>
+        <input type="text" id="songName"
+        name="songName" value={props.songName} onChange={handleNameSongChange}/>
       </div>
-      <button type="submit">Find</button>
+      <button onClick={handleClick}>Find</button>
     </form>
   );
 };
