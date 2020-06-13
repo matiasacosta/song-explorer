@@ -95,7 +95,7 @@ class App extends React.Component<{}, IState> {
             <SearchBox songName={this.state.songName} onSongNameChange={this.handleSongNameChange} onClick={this.handleClick}/>
           </React.Fragment>
         )}
-        {this.state.track &&(
+        {this.state.track && this.state.token &&(
           <Player track={this.state.track}/>
         )}
       </div>
